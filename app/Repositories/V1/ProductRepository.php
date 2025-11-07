@@ -8,17 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductRepository implements ProductRepositoryInterface
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct(private Product $model)
-    {
-        //
-    }
+    public function __construct(private Product $model) {}
 
     public function list(): Collection
     {
-        # Product::factory(20)->create();
         return $this->model->get();
     }
 
