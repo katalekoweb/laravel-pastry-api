@@ -16,7 +16,7 @@ Listar, Criar, Ler, Editar e Excluir (CRUDL) dados para os seguintes módulos: P
 Necessário ter o docker instalado na máquina. Se for windows vai precisar do WSL
 
 ## Como instalar na máquina local
-### clone o repositório
+### Clone o repositório
 ```bash
 git clone https://github.com/katalekoweb/katalekoweb/laravel-pastry-api.git
 cd katalekoweb/laravel-pastry-api
