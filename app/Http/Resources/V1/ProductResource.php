@@ -18,7 +18,7 @@ class ProductResource extends JsonResource
         return [
             "id" => $this->id,
             "name" => $this->name,
-            "price" => $this->price,
+            "price" => number_format((float)$this->price, 2, ".", " ") ,
             "photo" => $this->when($this->photo, url(Storage::url($this->photo)), null)
         ];
     }
