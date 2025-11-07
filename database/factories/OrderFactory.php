@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,10 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
+        $client = Client::factory()->create();
+
         return [
-            //
+            "client_id" => $client->id
         ];
     }
 }

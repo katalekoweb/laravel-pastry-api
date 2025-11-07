@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Controllers\Api\V1;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\OrderRequest;
+use App\Http\Resources\V1\OrderResource;
+use App\Repositories\V1\OrderRepositoryInterface;
+use Illuminate\Http\Request;
+
+class OrderController extends Controller
+{
+    public function __construct(private OrderRepositoryInterface $orderRepository) {}
+
+    public function index()
+    {
+        return OrderResource::collection($this->orderRepository->list());
+    }
+
+    public function store(OrderRequest $request)
+    {
+        return new OrderResource($this->orderRepository->create($request->validated()));
+    }
+
+    public function show(int $id)
+    {
+        return new OrderResource($this->orderRepository->read($id));
+    }
+
+    public function update(OrderRequest $request, string $id)
+    {
+        return new OrderResource($this->orderRepository->update($request->validated(), $id));
+    }
+
+    public function destroy(string $id)
+    {
+        $this->orderRepository->delete($id);
+        return response()->noContent();
+    }
+}
