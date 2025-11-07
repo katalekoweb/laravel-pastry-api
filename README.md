@@ -3,7 +3,7 @@
 Api para o gerenciamento de uma pastelaria desenvolvida com Laravel 12 e a biblioteca sanctum para o gerenciamento de autenticação. O sistema permite
 Listar, Criar, Ler, Editar e Excluir (CRUDL) dados para os seguintes módulos: Produtos, Clientes e Pedidos. Ainda conta com um sistema de autenticação com Login, Registo e Logout.
 
-## tecnologias Usadas
+## Tecnologias Usadas
 - PHP 8.4
 - Laravel 12
 - Mysql
@@ -13,7 +13,7 @@ Listar, Criar, Ler, Editar e Excluir (CRUDL) dados para os seguintes módulos: P
 - Postman
 
 ## Requisitos
-Necessário tr o docker instalado na máquina. Se for windows vai precisar do WSL
+Necessário ter o docker instalado na máquina. Se for windows vai precisar do WSL
 
 ## Como instalar na máquina local
 ### clone o repositório
