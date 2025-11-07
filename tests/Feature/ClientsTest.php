@@ -107,6 +107,5 @@ class ClientsTest extends TestCase
         $response = $this->deleteJson('/api/v1/clients/'.$client->id);
         
         $response->assertStatus(204);
-        # $this->assertDatabaseMissing("clients", $client->toArray());
     }
 }
