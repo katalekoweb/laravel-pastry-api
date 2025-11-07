@@ -85,8 +85,8 @@ php artisan test
 ```
 
 ## Imagens
-![Documentação](images/docs.png)
-![Testes automatizados](images/tests.png)
+![Documentação](public/images/docs.png)
+![Testes automatizados](public/images/tests.png)
 
 ## Meu email: juliofeli78@gmail.com
 ## Linkedin: https://www.linkedin.com/in/juliaokataleko
