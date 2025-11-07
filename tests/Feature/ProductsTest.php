@@ -59,6 +59,23 @@ class ProductsTest extends TestCase
         $response->assertStatus(201);
     }
 
+    public function test_logged_user_can_access_product_endpoint(): void
+    {
+        Sanctum::actingAs(User::factory()->create());
+
+        $product = Product::factory()->create();
+
+        $response = $this->getJson('/api/v1/products/' . $product->id);
+        
+        $response->assertStatus(200);
+        $response->assertJson([
+            'data' => [
+                "name" => $product->name,
+                "price" => $product->price
+            ] 
+        ]);
+    }
+
     public function test_logged_user_with_correct_data_can_update_a_product(): void
     {
         Sanctum::actingAs(User::factory()->create());

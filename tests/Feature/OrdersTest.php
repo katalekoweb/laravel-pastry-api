@@ -65,6 +65,25 @@ class OrdersTest extends TestCase
         $response->assertStatus(201);
     }
 
+    public function test_logged_user_can_access_order_endpoint(): void
+    {
+        Sanctum::actingAs(User::factory()->create());
+
+        $order = Order::factory()->create();
+
+        $response = $this->getJson('/api/v1/orders/' . $order->id);
+        
+        $response->assertStatus(200);
+        $response->assertJson([
+            'data' => [
+                "id" => $order->id,
+                "client" => [
+                    "id" => $order->client_id
+                ] 
+            ] 
+        ]);
+    }
+
     public function test_logged_user_with_correct_data_can_update_an_order(): void
     {
         Sanctum::actingAs(User::factory()->create());

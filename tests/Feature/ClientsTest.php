@@ -81,6 +81,24 @@ class ClientsTest extends TestCase
         $response->assertStatus(201);
     }
 
+    public function test_logged_user_can_access_client_endpoint(): void
+    {
+        Sanctum::actingAs(User::factory()->create());
+
+        $client = Client::factory()->create();
+
+        $response = $this->getJson('/api/v1/clients/' . $client->id);
+        
+        $response->assertStatus(200);
+        $response->assertJson([
+            'data' => [
+                "name" => $client->name,
+                "email" => $client->email,
+                "phone" => $client->phone,
+            ] 
+        ]);
+    }
+
     public function test_logged_user_with_correct_data_can_update_a_client(): void
     {
         Sanctum::actingAs(User::factory()->create());
