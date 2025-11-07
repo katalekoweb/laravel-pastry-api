@@ -17,7 +17,7 @@ class OrderResource extends JsonResource
         return [
             "id" => $this->id,
             "total" => number_format((float) $this->products?->sum('price'), 2, ".", " "),
-            "client" => $this->client,
+            "client" => new ClientResource($this->client),
             "products" => ProductResource::collection($this->products) 
         ];
     }
