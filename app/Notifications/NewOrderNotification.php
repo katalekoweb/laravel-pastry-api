@@ -35,8 +35,6 @@ class NewOrderNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        $products = $this->order->products->map(fn ($product) => $product->name . " - " . $product->price . "<br/>");
-
         $message = (new MailMessage)
             ->subject('Email de Novo Pedido.')
             ->line("Olá " . $notifiable?->name . ". Cá estão os detalhes do seu pedido");
