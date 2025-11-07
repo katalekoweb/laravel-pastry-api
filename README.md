@@ -74,7 +74,6 @@ Login | username:admin@admin.com, senha: password
 ### Como rodar os testes
 
 Acessar o terminal do ambiente sail
-### Faça o build das libs npm
 ```bash
 ./vendor/bin/sail bash
 ```
