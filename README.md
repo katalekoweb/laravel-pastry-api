@@ -3,6 +3,11 @@
 Api para o gerenciamento de uma pastelaria desenvolvida com Laravel 12 e a biblioteca sanctum para o gerenciamento de autenticação. O sistema permite
 Listar, Criar, Ler, Editar e Excluir (CRUDL) dados para os seguintes módulos: Produtos, Clientes e Pedidos. Ainda conta com um sistema de autenticação com Login, Registo e Logout.
 
+
+
+## A documentação da API pode ser acessada na routa /docs 
+Cobertura da documentação: Autenticação e CRUDL de clientes
+
 ## Tecnologias Usadas
 - PHP 8.4
 - Laravel 12
@@ -78,6 +83,10 @@ E rode:
 ```bash
 php artisan test
 ```
+
+## Imagens
+![Documentação](images/docs.png)
+![Testes automatizados](images/tests.png)
 
 ## Meu email: juliofeli78@gmail.com
 ## Linkedin: https://www.linkedin.com/in/juliaokataleko
