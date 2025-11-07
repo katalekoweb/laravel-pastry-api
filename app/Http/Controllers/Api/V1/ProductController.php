@@ -29,15 +29,15 @@ class ProductController extends Controller
         return $product ? new ProductResource($product) : $product;
     }
 
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, int $id)
     {
-        $product = $this->productRepository->update($request->validated(), $product);
+        $product = $this->productRepository->update($request->validated(), $id);
         return new ProductResource($product);
     }
 
-    public function destroy(Product $product)
+    public function destroy(int $id)
     {
-        $this->productRepository->delete($product);
+        $this->productRepository->delete($id);
         return response()->noContent();
     }
 }

@@ -10,6 +10,6 @@ interface ProductRepositoryInterface
     public function list (): Collection;
     public function create (array $data): Product;
     public function read (int $id): Product|null;
-    public function update (array $data, Product $product): Product;
-    public function delete (Product $product): void;
+    public function update (array $data, int $id): Product;
+    public function delete (int $id): void;
 }

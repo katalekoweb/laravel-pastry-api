@@ -28,14 +28,16 @@ class ProductRepository implements ProductRepositoryInterface
         return $product;
     }
 
-    public function update(array $data, Product $product): Product
+    public function update(array $data, int $id): Product
     {
-        $product->update($data);
+        $product = Product::find($id);
+        $product?->update($data);
         return $product;
     }
 
-    public function delete(Product $product): void
+    public function delete(int $id): void
     {
-        $product->delete();
+        $product = Product::find($id);
+        $product?->delete();
     }
 }
