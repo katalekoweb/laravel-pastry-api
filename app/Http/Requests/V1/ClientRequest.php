@@ -32,8 +32,8 @@ class ClientRequest extends FormRequest
             "complement" => ['nullable', 'string'],
             "neighbor" => ['nullable', 'string'],
             "neighbor" => ['nullable', 'string'],
-            "postal_code" => ['nullable', 'string'],
-            "sign_date" => ['nullable', 'string']
+            "postal_code" => ['nullable', 'numeric'],
+            "sign_date" => ['nullable', 'date']
         ];
     }
 }

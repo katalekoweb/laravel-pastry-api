@@ -9,11 +9,28 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register (Request $request) {
+    /**
+     * @group Auth
+     * @bodyParam name string required. Example: Joao
+     * @bodyParam email string  required. Example: john@mail.com
+     * @bodyParam password string required.
+     * @bodyParam password_confirmation string required.
+     * @response 200 {
+     *   "token": "urbfjdj83jdjsjjsudjsis838euue",
+     *   "user": {
+     *      "id": 1,
+     *      "name": John,
+     *      "email": "email@mail.com",
+     *  }
+     * }
+     */
+    public function register(Request $request)
+    {
         $validated = $request->validate([
             'name' => ['required', 'string', 'min:4'],
             'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'confirmed', 'min:5']
+            'password' => ['required', 'confirmed', 'min:5'],
+            'password_confirmation' => ["required"]
         ]);
 
         $user = User::query()->create($validated);
@@ -33,9 +50,23 @@ class AuthController extends Controller
         ], 500);
     }
 
-    public function login (Request $request) {
+    /**
+     * @group Auth
+     * @bodyParam email string  required. Example: john@mail.com
+     * @bodyParam password string.
+     * @response 200 {
+     *   "token": "urbfjdj83jdjsjjsudjsis838euue",
+     *   "user": {
+     *      "id": 1,
+     *      "name": John,
+     *      "email": "email@mail.com",
+     *  }
+     * }
+     */
+    public function login(Request $request)
+    {
         $credentials = $request->validate([
-            'email' => ['required', 'email', 'exists:users'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'min:5']
         ]);
 
@@ -57,7 +88,15 @@ class AuthController extends Controller
         ], 404);
     }
 
-    public function logout (Request $request) {
+    /**
+     * @group Auth
+     * @Authenticated
+     * @response 200 {
+     *   "message": "Sessão terminada com sucesso"
+     * }
+     */
+    public function logout(Request $request)
+    {
         $request->user()?->tokens()?->delete();
 
         return response()->json([
