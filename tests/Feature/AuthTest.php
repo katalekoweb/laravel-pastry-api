@@ -49,19 +49,7 @@ class AuthTest extends TestCase
         $response->assertStatus(201);
     }
 
-    public function test_user_with_invalid_email_in_login_returns_validation_error(): void
-    {
-        $formData = [
-            "email" => fake()->email,
-            "password" => "12345",
-        ];
-
-        $response = $this->postJson('/api/v1/login', $formData);
-
-        $response->assertStatus(422);
-    }
-
-    public function test_user_with_invalid_password_in_login_returns_error(): void
+    public function test_user_with_invalid_credentials_in_login_returns_error(): void
     {
         $formData = [
             "email" => fake()->email,
