@@ -11,7 +11,6 @@ class ClientRepository implements ClientRepositoryInterface
 
     public function list(): Collection
     {
-        Client::factory(10)->create();
         return $this->model->get();
     }
 
