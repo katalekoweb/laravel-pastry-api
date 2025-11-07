@@ -36,17 +36,36 @@ class ClientsTest extends TestCase
         $response->assertStatus(401);
     }
 
-    public function test_client_create_endpoint_has_validation(): void
+    public function test_client_create_endpoint_validate_required_name(): void
     {
         Sanctum::actingAs(User::factory()->create());
 
+        $email = fake()->email;
+        Client::factory()->create(["email" => $email]);
+
         $response = $this->postJson('/api/v1/clients', [
             "name" => "",
-            "email" => fake()->email
+            "email" => fake()->email()
         ]);
         
         $response->assertStatus(422);
         $response->assertInvalid(['name']);
+    }
+
+    public function test_client_create_endpoint_validate_required_and_unique_email(): void
+    {
+        Sanctum::actingAs(User::factory()->create());
+
+        $email = fake()->email;
+        Client::factory()->create(["email" => $email]);
+
+        $response = $this->postJson('/api/v1/clients', [
+            "name" => fake()->name,
+            "email" => $email
+        ]);
+        
+        $response->assertStatus(422);
+        $response->assertInvalid(['email']);
     }
 
     public function test_logged_user_with_correct_data_can_create_a_client(): void
