@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\ClientRequest;
 use App\Http\Resources\V1\ClientResource;
 use App\Repositories\V1\ClientRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -121,5 +122,20 @@ class ClientController extends Controller
     {
         $this->clientRepository->delete($id);
         return response()->noContent();
+    }
+
+    public function restore(int|null $id = null): JsonResponse
+    {
+        $restore = $this->clientRepository->restore($id);
+
+        if ($restore) {
+            return response()->json([
+                "message" => "Cliente(s) restaurado(s) com sucesso"
+            ], 200);
+        }
+
+        return response()->json([
+            "message" => "Ocorreu um erro. O cliente não foi encontrado"
+        ], 404);
     }
 }

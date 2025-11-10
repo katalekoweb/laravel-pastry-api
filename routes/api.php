@@ -21,7 +21,12 @@ Route::prefix("v1")->group(function () {
 
         Route::post("logout", [AuthController::class, "logout"]);
         Route::apiResource("products", ProductController::class);
+        Route::post("products/restore/{id?}", [ProductController::class, 'restore'])->name("products.restore");
+
         Route::apiResource("clients", ClientController::class);
+        Route::post("clients/restore/{id?}", [ClientController::class, 'restore'])->name("clients.restore");
+
         Route::apiResource("orders", OrderController::class);
+        Route::post("orders/restore/{id?}", [OrderController::class, 'restore'])->name("orders.restore");
     });
 });

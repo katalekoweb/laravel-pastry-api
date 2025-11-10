@@ -24,7 +24,6 @@ class ProductRepository implements ProductRepositoryInterface
     public function read(int $id): Product|null
     {
         $product = Product::find($id);
-
         return $product;
     }
 
@@ -39,5 +38,21 @@ class ProductRepository implements ProductRepositoryInterface
     {
         $product = Product::find($id);
         $product?->delete();
+    }
+
+    public function restore(int|null $id): bool
+    {
+        if ($id) {
+            $product = Product::onlyTrashed()->find($id);
+            if ($product) {
+                $product->restore();
+                return true;
+            }
+
+            return false;
+        }
+
+        Product::onlyTrashed()->restore();
+        return true;
     }
 }

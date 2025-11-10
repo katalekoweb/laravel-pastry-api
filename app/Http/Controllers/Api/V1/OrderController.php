@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\OrderRequest;
 use App\Http\Resources\V1\OrderResource;
 use App\Repositories\V1\OrderRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -36,5 +37,20 @@ class OrderController extends Controller
     {
         $this->orderRepository->delete($id);
         return response()->noContent();
+    }
+
+    public function restore(int|null $id = null): JsonResponse
+    {
+        $restore = $this->orderRepository->restore($id);
+
+        if ($restore) {
+            return response()->json([
+                "message" => "Pedidos(s) restaurado(s) com sucesso"
+            ], 200);
+        }
+
+        return response()->json([
+            "message" => "Ocorreu um erro. O pedido não foi encontrado"
+        ], 404);
     }
 }

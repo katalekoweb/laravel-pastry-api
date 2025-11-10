@@ -12,4 +12,5 @@ interface OrderRepositoryInterface
     public function read (int $id): Order|null;
     public function update (array $data, int $id): Order;
     public function delete (int $id): void;
+    public function restore (int|null $id): bool;
 }

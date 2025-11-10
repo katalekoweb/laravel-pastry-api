@@ -55,4 +55,20 @@ class OrderRepository implements OrderRepositoryInterface
         $order = Order::find($id);
         $order?->delete();
     }
+
+    public function restore(int|null $id): bool
+    {
+        if ($id) {
+            $order = Order::onlyTrashed()->find($id);
+            if ($order) {
+                $order->restore();
+                return true;
+            }
+
+            return false;
+        }
+
+        Order::onlyTrashed()->restore();
+        return true;
+    }
 }

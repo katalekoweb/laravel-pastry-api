@@ -7,6 +7,8 @@ use App\Http\Requests\V1\ProductRequest;
 use App\Http\Resources\V1\ProductResource;
 use App\Models\Product;
 use App\Repositories\V1\ProductRepositoryInterface;
+use Illuminate\Http\JsonResponse;
+
 class ProductController extends Controller
 {
     public function __construct(private ProductRepositoryInterface $productRepository) {}
@@ -39,5 +41,20 @@ class ProductController extends Controller
     {
         $this->productRepository->delete($id);
         return response()->noContent();
+    }
+
+    public function restore(int|null $id = null): JsonResponse
+    {
+        $restore = $this->productRepository->restore($id);
+
+        if ($restore) {
+            return response()->json([
+                "message" => "Produto(s) restaurado(s) com sucesso"
+            ], 200);
+        }
+
+        return response()->json([
+            "message" => "Ocorreu um erro. O produto não foi encontrado"
+        ], 404);
     }
 }

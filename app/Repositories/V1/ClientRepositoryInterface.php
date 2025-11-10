@@ -12,4 +12,5 @@ interface ClientRepositoryInterface
     public function read(int $id): Client|null;
     public function update(array $data, int $id): Client;
     public function delete(int $id): void;
+    public function restore (int|null $id): bool;
 }

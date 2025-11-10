@@ -36,4 +36,20 @@ class ClientRepository implements ClientRepositoryInterface
         $client = Client::find($id);
         $client?->delete();
     }
+
+    public function restore(int|null $id): bool
+    {
+        if ($id) {
+            $client = Client::onlyTrashed()->find($id);
+            if ($client) {
+                $client->restore();
+                return true;
+            }
+
+            return false;
+        }
+
+        Client::onlyTrashed()->restore();
+        return true;
+    }
 }

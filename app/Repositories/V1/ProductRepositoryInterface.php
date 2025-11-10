@@ -12,4 +12,5 @@ interface ProductRepositoryInterface
     public function read (int $id): Product|null;
     public function update (array $data, int $id): Product;
     public function delete (int $id): void;
+    public function restore (int|null $id): bool;
 }
