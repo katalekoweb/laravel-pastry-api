@@ -3,12 +3,13 @@
 namespace App\Notifications;
 
 use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewOrderNotification extends Notification
+class NewOrderNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -39,9 +40,13 @@ class NewOrderNotification extends Notification
             ->subject('Email de Novo Pedido.')
             ->line("Olá " . $notifiable?->name . ". Cá estão os detalhes do seu pedido");
 
+        $message->line("+++++++++++++++++++++++++++");
         foreach ($this->order->products as $key => $product) {
-            $message->line("{$product->name} - R$ {$product->price}");
+            $productItemQtd = OrderProduct::whereOrderId($this->order?->id)->whereProductId($product->id)->first()?->quantity ?? 1;
+            
+            $message->line("Item: {$product->name} - Qtd.: {$productItemQtd} - Subtotal: R$ {$product->price}");
         }
+        $message->line("+++++++++++++++++++++++++++");
 
         $total = number_format((float)$this->order->products->sum('price'), 2, ".", " ");
         $message->line("Total: R$ $total");
