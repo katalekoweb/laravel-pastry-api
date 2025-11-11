@@ -13,7 +13,7 @@ use Tests\TestCase;
 
 class OrdersTest extends TestCase
 {
-     use RefreshDatabase;
+    use RefreshDatabase;
     private User $user;
 
     protected function setUp(): void
@@ -34,7 +34,7 @@ class OrdersTest extends TestCase
     public function test_unlogged_user_cannot_access_orders(): void
     {
         $response = $this->getJson('/api/v1/orders');
-        
+
         $response->assertStatus(401);
     }
 
@@ -46,7 +46,7 @@ class OrdersTest extends TestCase
             "client_id" => "",
             "products" => ""
         ]);
-        
+
         $response->assertStatus(422);
         $response->assertInvalid(['client_id', 'products']);
     }
@@ -61,8 +61,32 @@ class OrdersTest extends TestCase
             "client_id" => $client?->id,
             "products" => [$product?->id, 2]
         ]);
-        
+
         $response->assertStatus(422);
+    }
+
+    public function test_block_order_create_request_after_limit_exceded()
+    {
+        Sanctum::actingAs(User::factory()->create());
+
+        $product = Product::factory()->create();
+        $client = Client::factory()->create();
+
+        for ($i = 0; $i < 5; $i++) {
+            $response = $this->postJson('/api/v1/orders', [
+                "client_id" => $client?->id,
+                "products" => [$product?->id]
+            ]);
+
+            $response->assertStatus(201);
+        }
+
+        $response = $this->postJson('/api/v1/orders', [
+            "client_id" => $client?->id,
+            "products" => [$product?->id]
+        ]);
+
+        $response->assertStatus(429);
     }
 
     public function test_logged_user_with_correct_data_can_create_an_order(): void
@@ -75,7 +99,7 @@ class OrdersTest extends TestCase
             "client_id" => $client?->id,
             "products" => [$product?->id]
         ]);
-        
+
         $response->assertStatus(201);
     }
 
@@ -86,15 +110,15 @@ class OrdersTest extends TestCase
         $order = Order::factory()->create();
 
         $response = $this->getJson('/api/v1/orders/' . $order->id);
-        
+
         $response->assertStatus(200);
         $response->assertJson([
             'data' => [
                 "id" => $order->id,
                 "client" => [
                     "id" => $order->client_id
-                ] 
-            ] 
+                ]
+            ]
         ]);
     }
 
@@ -111,7 +135,7 @@ class OrdersTest extends TestCase
         ];
 
         $response = $this->putJson('/api/v1/orders/' . $order->id, $orderFormData);
-        
+
         $response->assertStatus(200);
         unset($orderFormData['products']);
         $this->assertDatabaseHas("orders", $orderFormData);
@@ -122,8 +146,8 @@ class OrdersTest extends TestCase
         Sanctum::actingAs(User::factory()->create());
         $order = Order::factory()->create();
 
-        $response = $this->deleteJson('/api/v1/orders/'.$order->id);
-        
+        $response = $this->deleteJson('/api/v1/orders/' . $order->id);
+
         $response->assertStatus(204);
     }
 }

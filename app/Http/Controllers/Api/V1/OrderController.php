@@ -31,7 +31,7 @@ class OrderController extends Controller
     public function store(OrderRequest $request)
     {
         $key = 'user:' . request()->user()->id;
-        $maxAttempts = 3;
+        $maxAttempts = 5;
 
         if (RateLimiter::tooManyAttempts($key, $maxAttempts)) {
             return response()->json(['message' => 'Excesso de tentativas. Tente daqui a pouco'], 429);
