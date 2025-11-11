@@ -3,6 +3,7 @@
 namespace App\Repositories\V1;
 
 use App\Events\OrderCreated;
+use App\Models\Client;
 use App\Models\Order;
 use App\Notifications\NewOrderNotification;
 use Illuminate\Support\Collection;
@@ -30,8 +31,8 @@ class OrderRepository implements OrderRepositoryInterface
 
         $order = $this->model->create($data);
         $order->products()?->sync($products);
-
-        if ($order->client->email) event(new OrderCreated($order));
+        
+        if ($order->client?->email) event(new OrderCreated($order));
 
         return $order;
     }

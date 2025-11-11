@@ -3,6 +3,7 @@
 namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class OrderRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class OrderRequest extends FormRequest
         return [
             "client_id" => ['required', 'exists:clients,id'],
             "products" => ["required", "array"],
-            "products.*" => ["required", "exists:products,id"]
+            "products.*" => ["required", Rule::exists('products', 'id')->where(function ($query) { $query->where('status', true);}),]
         ];
     }
 }
