@@ -3,10 +3,8 @@
 Api para o gerenciamento de uma pastelaria desenvolvida com Laravel 12 e a biblioteca sanctum para o gerenciamento de autenticação. O sistema permite
 Listar, Criar, Ler, Editar e Excluir (CRUDL) dados para os seguintes módulos: Produtos, Clientes e Pedidos. Ainda conta com um sistema de autenticação com Login, Registo e Logout.
 
-
-
 ## A documentação da API pode ser acessada na routa /docs 
-Cobertura da documentação: Autenticação e CRUDL de clientes
+Cobertura da documentação: Autenticação e CRUDL de clientes, produtos e pedidos
 
 ## Tecnologias Usadas
 - PHP 8.4
@@ -69,7 +67,8 @@ docker run --rm \
 
 ### Acesse o seu projeto num de cliente de API como o post man ou Insonia
 Url: http://locathost/api/v1/login, Method: POST \
-Login | username:admin@admin.com, senha: password
+Login | username:admin@admin.com, senha: password \
+O seeder de dados já com com 4 categorias predefinidas ("Salgado", "Doce", "Especial", "Bebidas")
 
 ### Como rodar os testes
 
