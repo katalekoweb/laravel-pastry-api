@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -49,9 +50,11 @@ class ProductsTest extends TestCase
         Sanctum::actingAs(User::factory()->create());
 
         $photo = UploadedFile::fake()->create('photo.png', 100);
+        $category = Category::factory()->create();
 
         $response = $this->postJson('/api/v1/products', [
             "name" => fake()->name,
+            "category_id" => $category->id,
             "price" => rand(100, 999),
             "photo" => $photo
         ]);
@@ -71,6 +74,7 @@ class ProductsTest extends TestCase
         $response->assertJson([
             'data' => [
                 "name" => $product->name,
+                "category_id" => $product->category_id,
                 "price" => $product->price
             ] 
         ]);
@@ -79,12 +83,13 @@ class ProductsTest extends TestCase
     public function test_logged_user_with_correct_data_can_update_a_product(): void
     {
         Sanctum::actingAs(User::factory()->create());
+        $product = Product::factory()->create();
+
         $productData = [
             "name" => fake()->name,
+            "category_id" => $product->category_id,
             "price" => rand(100, 999)
         ];
-
-        $product = Product::factory()->create();
 
         $response = $this->putJson('/api/v1/products/'.$product->id, $productData);
         
