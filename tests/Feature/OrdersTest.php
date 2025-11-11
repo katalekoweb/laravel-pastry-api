@@ -51,6 +51,20 @@ class OrdersTest extends TestCase
         $response->assertInvalid(['client_id', 'products']);
     }
 
+    public function test_create_order_endpoint_validate_product_existence(): void
+    {
+        Sanctum::actingAs(User::factory()->create());
+        $product = Product::factory()->create();
+        $client = Client::factory()->create();
+
+        $response = $this->postJson('/api/v1/orders', [
+            "client_id" => $client?->id,
+            "products" => [$product?->id, 2]
+        ]);
+        
+        $response->assertStatus(422);
+    }
+
     public function test_logged_user_with_correct_data_can_create_an_order(): void
     {
         Sanctum::actingAs(User::factory()->create());

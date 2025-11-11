@@ -52,7 +52,7 @@ class ClientsTest extends TestCase
         $response->assertInvalid(['name']);
     }
 
-    public function test_client_create_endpoint_validate_required_and_unique_email(): void
+    public function test_client_create_endpoint_validate_unique_email(): void
     {
         Sanctum::actingAs(User::factory()->create());
 
