@@ -29,7 +29,7 @@ class OrderRepository implements OrderRepositoryInterface
 
     public function create(array $data): Order|JsonResponse
     {
-        DB::beginTransaction();
+        // DB::beginTransaction();
 
         try {            
             $products = $data["products"];
@@ -38,12 +38,14 @@ class OrderRepository implements OrderRepositoryInterface
             $order = $this->model->create($data);
             $order->products()?->sync($products);
 
+            // dd("Sim");
+
             if ($order->client?->email) event(new OrderCreated($order));
 
-            DB::commit();
+            // DB::commit();
 
         } catch (Exception $e) {
-            DB::rollBack();
+            // DB::rollBack();
             return response()->json(["message" => $e->getMessage()], 422);
         }
 
