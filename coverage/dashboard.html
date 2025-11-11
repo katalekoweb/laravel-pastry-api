@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=11.0.11" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=11.0.11" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=11.0.11" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/var/www/html/app</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Events/OrderCreated.php.html#14">App\Events\OrderCreated</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ProfileController.php.html#8">App\Http\Controllers\Api\V1\ProfileController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/DeleteOldRecords.php.html#11">App\Jobs\DeleteOldRecords</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/SendEmailToClient.php.html#10">App\Listeners\SendEmailToClient</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Category.php.html#10">App\Models\Category</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Client.php.html#11">App\Models\Client</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/OrderProduct.php.html#10">App\Models\OrderProduct</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Notifications/NewOrderNotification.php.html#12">App\Notifications\NewOrderNotification</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Enums/ProductTypeEnum.php.html#5">App\Enums\ProductTypeEnum</a></td><td class="text-right">14%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ClientController.php.html#13">App\Http\Controllers\Api\V1\ClientController</a></td><td class="text-right">46%</td></tr>
+       <tr><td><a href="Repositories/V1/ClientRepository.php.html#9">App\Repositories\V1\ClientRepository</a></td><td class="text-right">56%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ProductController.php.html#13">App\Http\Controllers\Api\V1\ProductController</a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="Repositories/V1/ProductRepository.php.html#9">App\Repositories\V1\ProductRepository</a></td><td class="text-right">59%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/OrderController.php.html#14">App\Http\Controllers\Api\V1\OrderController</a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Repositories/V1/OrderRepository.php.html#14">App\Repositories\V1\OrderRepository</a></td><td class="text-right">74%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/AuthController.php.html#10">App\Http\Controllers\Api\V1\AuthController</a></td><td class="text-right">89%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Notifications/NewOrderNotification.php.html#12">App\Notifications\NewOrderNotification</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Enums/ProductTypeEnum.php.html#5">App\Enums\ProductTypeEnum</a></td><td class="text-right">28</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ClientController.php.html#13">App\Http\Controllers\Api\V1\ClientController</a></td><td class="text-right">17</td></tr>
+       <tr><td><a href="Repositories/V1/ProductRepository.php.html#9">App\Repositories\V1\ProductRepository</a></td><td class="text-right">16</td></tr>
+       <tr><td><a href="Repositories/V1/ClientRepository.php.html#9">App\Repositories\V1\ClientRepository</a></td><td class="text-right">15</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ProductController.php.html#13">App\Http\Controllers\Api\V1\ProductController</a></td><td class="text-right">15</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/OrderController.php.html#14">App\Http\Controllers\Api\V1\OrderController</a></td><td class="text-right">14</td></tr>
+       <tr><td><a href="Repositories/V1/OrderRepository.php.html#14">App\Repositories\V1\OrderRepository</a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/AuthController.php.html#10">App\Http\Controllers\Api\V1\AuthController</a></td><td class="text-right">5</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Events/OrderCreated.php.html#21"><abbr title="App\Events\OrderCreated::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Events/OrderCreated.php.html#31"><abbr title="App\Events\OrderCreated::broadcastOn">broadcastOn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ClientController.php.html#140"><abbr title="App\Http\Controllers\Api\V1\ClientController::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/OrderController.php.html#77"><abbr title="App\Http\Controllers\Api\V1\OrderController::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ProductController.php.html#141"><abbr title="App\Http\Controllers\Api\V1\ProductController::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ProfileController.php.html#21"><abbr title="App\Http\Controllers\Api\V1\ProfileController::me">me</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/DeleteOldRecords.php.html#18"><abbr title="App\Jobs\DeleteOldRecords::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/DeleteOldRecords.php.html#26"><abbr title="App\Jobs\DeleteOldRecords::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/SendEmailToClient.php.html#15"><abbr title="App\Listeners\SendEmailToClient::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/SendEmailToClient.php.html#23"><abbr title="App\Listeners\SendEmailToClient::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Category.php.html#16"><abbr title="App\Models\Category::products">products</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Client.php.html#35"><abbr title="App\Models\Client::orders">orders</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/OrderProduct.php.html#21"><abbr title="App\Models\OrderProduct::order">order</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/OrderProduct.php.html#25"><abbr title="App\Models\OrderProduct::product">product</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Notifications/NewOrderNotification.php.html#19"><abbr title="App\Notifications\NewOrderNotification::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Notifications/NewOrderNotification.php.html#29"><abbr title="App\Notifications\NewOrderNotification::via">via</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Notifications/NewOrderNotification.php.html#37"><abbr title="App\Notifications\NewOrderNotification::toMail">toMail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Notifications/NewOrderNotification.php.html#62"><abbr title="App\Notifications\NewOrderNotification::toArray">toArray</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repositories/V1/ClientRepository.php.html#49"><abbr title="App\Repositories\V1\ClientRepository::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repositories/V1/OrderRepository.php.html#79"><abbr title="App\Repositories\V1\OrderRepository::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repositories/V1/ProductRepository.php.html#51"><abbr title="App\Repositories\V1\ProductRepository::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Enums/ProductTypeEnum.php.html#12"><abbr title="App\Enums\ProductTypeEnum::label">label</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repositories/V1/ClientRepository.php.html#13"><abbr title="App\Repositories\V1\ClientRepository::list">list</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Repositories/V1/ProductRepository.php.html#13"><abbr title="App\Repositories\V1\ProductRepository::list">list</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/AuthController.php.html#27"><abbr title="App\Http\Controllers\Api\V1\AuthController::register">register</abbr></a></td><td class="text-right">77%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Enums/ProductTypeEnum.php.html#12"><abbr title="App\Enums\ProductTypeEnum::label">label</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Repositories/V1/ClientRepository.php.html#49"><abbr title="App\Repositories\V1\ClientRepository::restore">restore</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Repositories/V1/OrderRepository.php.html#79"><abbr title="App\Repositories\V1\OrderRepository::restore">restore</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Repositories/V1/ProductRepository.php.html#51"><abbr title="App\Repositories\V1\ProductRepository::restore">restore</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ClientController.php.html#140"><abbr title="App\Http\Controllers\Api\V1\ClientController::restore">restore</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/OrderController.php.html#77"><abbr title="App\Http\Controllers\Api\V1\OrderController::restore">restore</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/ProductController.php.html#141"><abbr title="App\Http\Controllers\Api\V1\ProductController::restore">restore</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Notifications/NewOrderNotification.php.html#37"><abbr title="App\Notifications\NewOrderNotification::toMail">toMail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Api/V1/AuthController.php.html#27"><abbr title="App\Http\Controllers\Api\V1\AuthController::register">register</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 11.0.11</a> using <a href="https://www.php.net/" target="_top">PHP 8.4.14</a> and <a href="https://phpunit.de/">PHPUnit 11.5.43</a> at Tue Nov 11 14:21:08 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=11.0.11" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=11.0.11" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=11.0.11" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([8,0,1,0,0,1,3,1,1,1,0,13], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([22,0,0,0,0,0,0,2,1,0,0,57], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,2,"<a href=\"Events\/OrderCreated.php.html#14\">App\\Events\\OrderCreated<\/a>"],[89.47368421052632,5,"<a href=\"Http\/Controllers\/Api\/V1\/AuthController.php.html#10\">App\\Http\\Controllers\\Api\\V1\\AuthController<\/a>"],[46.666666666666664,8,"<a href=\"Http\/Controllers\/Api\/V1\/ClientController.php.html#13\">App\\Http\\Controllers\\Api\\V1\\ClientController<\/a>"],[60,9,"<a href=\"Http\/Controllers\/Api\/V1\/OrderController.php.html#14\">App\\Http\\Controllers\\Api\\V1\\OrderController<\/a>"],[57.89473684210527,9,"<a href=\"Http\/Controllers\/Api\/V1\/ProductController.php.html#13\">App\\Http\\Controllers\\Api\\V1\\ProductController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/V1\/ProfileController.php.html#8\">App\\Http\\Controllers\\Api\\V1\\ProfileController<\/a>"],[100,0,"<a href=\"Http\/Controllers\/Controller.php.html#5\">App\\Http\\Controllers\\Controller<\/a>"],[100,2,"<a href=\"Http\/Requests\/V1\/ClientRequest.php.html#7\">App\\Http\\Requests\\V1\\ClientRequest<\/a>"],[100,3,"<a href=\"Http\/Requests\/V1\/FilterRequest.php.html#7\">App\\Http\\Requests\\V1\\FilterRequest<\/a>"],[100,2,"<a href=\"Http\/Requests\/V1\/OrderRequest.php.html#8\">App\\Http\\Requests\\V1\\OrderRequest<\/a>"],[100,3,"<a href=\"Http\/Requests\/V1\/ProductRequest.php.html#7\">App\\Http\\Requests\\V1\\ProductRequest<\/a>"],[100,1,"<a href=\"Http\/Resources\/V1\/ClientResource.php.html#8\">App\\Http\\Resources\\V1\\ClientResource<\/a>"],[100,1,"<a href=\"Http\/Resources\/V1\/OrderResource.php.html#8\">App\\Http\\Resources\\V1\\OrderResource<\/a>"],[100,1,"<a href=\"Http\/Resources\/V1\/ProductResource.php.html#9\">App\\Http\\Resources\\V1\\ProductResource<\/a>"],[0,2,"<a href=\"Jobs\/DeleteOldRecords.php.html#11\">App\\Jobs\\DeleteOldRecords<\/a>"],[0,2,"<a href=\"Listeners\/SendEmailToClient.php.html#10\">App\\Listeners\\SendEmailToClient<\/a>"],[0,1,"<a href=\"Models\/Category.php.html#10\">App\\Models\\Category<\/a>"],[0,1,"<a href=\"Models\/Client.php.html#11\">App\\Models\\Client<\/a>"],[100,2,"<a href=\"Models\/Order.php.html#12\">App\\Models\\Order<\/a>"],[0,2,"<a href=\"Models\/OrderProduct.php.html#10\">App\\Models\\OrderProduct<\/a>"],[100,1,"<a href=\"Models\/Product.php.html#10\">App\\Models\\Product<\/a>"],[100,1,"<a href=\"Models\/User.php.html#11\">App\\Models\\User<\/a>"],[0,5,"<a href=\"Notifications\/NewOrderNotification.php.html#12\">App\\Notifications\\NewOrderNotification<\/a>"],[100,2,"<a href=\"Providers\/AppServiceProvider.php.html#7\">App\\Providers\\AppServiceProvider<\/a>"],[100,2,"<a href=\"Providers\/RepositoryServiceProvider.php.html#13\">App\\Providers\\RepositoryServiceProvider<\/a>"],[56.00000000000001,9,"<a href=\"Repositories\/V1\/ClientRepository.php.html#9\">App\\Repositories\\V1\\ClientRepository<\/a>"],[74.19354838709677,11,"<a href=\"Repositories\/V1\/OrderRepository.php.html#14\">App\\Repositories\\V1\\OrderRepository<\/a>"],[59.25925925925925,10,"<a href=\"Repositories\/V1\/ProductRepository.php.html#9\">App\\Repositories\\V1\\ProductRepository<\/a>"],[14.285714285714285,6,"<a href=\"Enums\/ProductTypeEnum.php.html#5\">App\\Enums\\ProductTypeEnum<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Events\/OrderCreated.php.html#21\">App\\Events\\OrderCreated::__construct<\/a>"],[0,1,"<a href=\"Events\/OrderCreated.php.html#31\">App\\Events\\OrderCreated::broadcastOn<\/a>"],[77.77777777777779,2,"<a href=\"Http\/Controllers\/Api\/V1\/AuthController.php.html#27\">App\\Http\\Controllers\\Api\\V1\\AuthController::register<\/a>"],[100,2,"<a href=\"Http\/Controllers\/Api\/V1\/AuthController.php.html#66\">App\\Http\\Controllers\\Api\\V1\\AuthController::login<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/AuthController.php.html#98\">App\\Http\\Controllers\\Api\\V1\\AuthController::logout<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ClientController.php.html#15\">App\\Http\\Controllers\\Api\\V1\\ClientController::__construct<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ClientController.php.html#36\">App\\Http\\Controllers\\Api\\V1\\ClientController::index<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ClientController.php.html#56\">App\\Http\\Controllers\\Api\\V1\\ClientController::store<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ClientController.php.html#78\">App\\Http\\Controllers\\Api\\V1\\ClientController::show<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ClientController.php.html#105\">App\\Http\\Controllers\\Api\\V1\\ClientController::update<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ClientController.php.html#122\">App\\Http\\Controllers\\Api\\V1\\ClientController::destroy<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Api\/V1\/ClientController.php.html#140\">App\\Http\\Controllers\\Api\\V1\\ClientController::restore<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/OrderController.php.html#16\">App\\Http\\Controllers\\Api\\V1\\OrderController::__construct<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/OrderController.php.html#22\">App\\Http\\Controllers\\Api\\V1\\OrderController::index<\/a>"],[100,2,"<a href=\"Http\/Controllers\/Api\/V1\/OrderController.php.html#31\">App\\Http\\Controllers\\Api\\V1\\OrderController::store<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/OrderController.php.html#49\">App\\Http\\Controllers\\Api\\V1\\OrderController::show<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/OrderController.php.html#58\">App\\Http\\Controllers\\Api\\V1\\OrderController::update<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/OrderController.php.html#67\">App\\Http\\Controllers\\Api\\V1\\OrderController::destroy<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Api\/V1\/OrderController.php.html#77\">App\\Http\\Controllers\\Api\\V1\\OrderController::restore<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ProductController.php.html#15\">App\\Http\\Controllers\\Api\\V1\\ProductController::__construct<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ProductController.php.html#38\">App\\Http\\Controllers\\Api\\V1\\ProductController::index<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ProductController.php.html#59\">App\\Http\\Controllers\\Api\\V1\\ProductController::store<\/a>"],[100,2,"<a href=\"Http\/Controllers\/Api\/V1\/ProductController.php.html#80\">App\\Http\\Controllers\\Api\\V1\\ProductController::show<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ProductController.php.html#105\">App\\Http\\Controllers\\Api\\V1\\ProductController::update<\/a>"],[100,1,"<a href=\"Http\/Controllers\/Api\/V1\/ProductController.php.html#123\">App\\Http\\Controllers\\Api\\V1\\ProductController::destroy<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Api\/V1\/ProductController.php.html#141\">App\\Http\\Controllers\\Api\\V1\\ProductController::restore<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Api\/V1\/ProfileController.php.html#21\">App\\Http\\Controllers\\Api\\V1\\ProfileController::me<\/a>"],[100,1,"<a href=\"Http\/Requests\/V1\/ClientRequest.php.html#12\">App\\Http\\Requests\\V1\\ClientRequest::authorize<\/a>"],[100,1,"<a href=\"Http\/Requests\/V1\/ClientRequest.php.html#22\">App\\Http\\Requests\\V1\\ClientRequest::rules<\/a>"],[100,1,"<a href=\"Http\/Requests\/V1\/FilterRequest.php.html#12\">App\\Http\\Requests\\V1\\FilterRequest::authorize<\/a>"],[100,1,"<a href=\"Http\/Requests\/V1\/FilterRequest.php.html#22\">App\\Http\\Requests\\V1\\FilterRequest::rules<\/a>"],[100,1,"<a href=\"Http\/Requests\/V1\/FilterRequest.php.html#32\">App\\Http\\Requests\\V1\\FilterRequest::prepareForValidation<\/a>"],[100,1,"<a href=\"Http\/Requests\/V1\/OrderRequest.php.html#13\">App\\Http\\Requests\\V1\\OrderRequest::authorize<\/a>"],[100,1,"<a href=\"Http\/Requests\/V1\/OrderRequest.php.html#23\">App\\Http\\Requests\\V1\\OrderRequest::rules<\/a>"],[100,1,"<a href=\"Http\/Requests\/V1\/ProductRequest.php.html#12\">App\\Http\\Requests\\V1\\ProductRequest::authorize<\/a>"],[100,2,"<a href=\"Http\/Requests\/V1\/ProductRequest.php.html#22\">App\\Http\\Requests\\V1\\ProductRequest::rules<\/a>"],[100,1,"<a href=\"Http\/Resources\/V1\/ClientResource.php.html#15\">App\\Http\\Resources\\V1\\ClientResource::toArray<\/a>"],[100,1,"<a href=\"Http\/Resources\/V1\/OrderResource.php.html#15\">App\\Http\\Resources\\V1\\OrderResource::toArray<\/a>"],[100,1,"<a href=\"Http\/Resources\/V1\/ProductResource.php.html#16\">App\\Http\\Resources\\V1\\ProductResource::toArray<\/a>"],[0,1,"<a href=\"Jobs\/DeleteOldRecords.php.html#18\">App\\Jobs\\DeleteOldRecords::__construct<\/a>"],[0,1,"<a href=\"Jobs\/DeleteOldRecords.php.html#26\">App\\Jobs\\DeleteOldRecords::handle<\/a>"],[0,1,"<a href=\"Listeners\/SendEmailToClient.php.html#15\">App\\Listeners\\SendEmailToClient::__construct<\/a>"],[0,1,"<a href=\"Listeners\/SendEmailToClient.php.html#23\">App\\Listeners\\SendEmailToClient::handle<\/a>"],[0,1,"<a href=\"Models\/Category.php.html#16\">App\\Models\\Category::products<\/a>"],[0,1,"<a href=\"Models\/Client.php.html#35\">App\\Models\\Client::orders<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#22\">App\\Models\\Order::client<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#26\">App\\Models\\Order::products<\/a>"],[0,1,"<a href=\"Models\/OrderProduct.php.html#21\">App\\Models\\OrderProduct::order<\/a>"],[0,1,"<a href=\"Models\/OrderProduct.php.html#25\">App\\Models\\OrderProduct::product<\/a>"],[100,1,"<a href=\"Models\/Product.php.html#23\">App\\Models\\Product::category<\/a>"],[100,1,"<a href=\"Models\/User.php.html#42\">App\\Models\\User::casts<\/a>"],[0,1,"<a href=\"Notifications\/NewOrderNotification.php.html#19\">App\\Notifications\\NewOrderNotification::__construct<\/a>"],[0,1,"<a href=\"Notifications\/NewOrderNotification.php.html#29\">App\\Notifications\\NewOrderNotification::via<\/a>"],[0,2,"<a href=\"Notifications\/NewOrderNotification.php.html#37\">App\\Notifications\\NewOrderNotification::toMail<\/a>"],[0,1,"<a href=\"Notifications\/NewOrderNotification.php.html#62\">App\\Notifications\\NewOrderNotification::toArray<\/a>"],[100,1,"<a href=\"Providers\/AppServiceProvider.php.html#12\">App\\Providers\\AppServiceProvider::register<\/a>"],[100,1,"<a href=\"Providers\/AppServiceProvider.php.html#20\">App\\Providers\\AppServiceProvider::boot<\/a>"],[100,1,"<a href=\"Providers\/RepositoryServiceProvider.php.html#18\">App\\Providers\\RepositoryServiceProvider::register<\/a>"],[100,1,"<a href=\"Providers\/RepositoryServiceProvider.php.html#26\">App\\Providers\\RepositoryServiceProvider::boot<\/a>"],[100,1,"<a href=\"Repositories\/V1\/ClientRepository.php.html#11\">App\\Repositories\\V1\\ClientRepository::__construct<\/a>"],[66.66666666666666,1,"<a href=\"Repositories\/V1\/ClientRepository.php.html#13\">App\\Repositories\\V1\\ClientRepository::list<\/a>"],[100,1,"<a href=\"Repositories\/V1\/ClientRepository.php.html#26\">App\\Repositories\\V1\\ClientRepository::create<\/a>"],[100,1,"<a href=\"Repositories\/V1\/ClientRepository.php.html#31\">App\\Repositories\\V1\\ClientRepository::read<\/a>"],[100,1,"<a href=\"Repositories\/V1\/ClientRepository.php.html#36\">App\\Repositories\\V1\\ClientRepository::update<\/a>"],[100,1,"<a href=\"Repositories\/V1\/ClientRepository.php.html#43\">App\\Repositories\\V1\\ClientRepository::delete<\/a>"],[0,3,"<a href=\"Repositories\/V1\/ClientRepository.php.html#49\">App\\Repositories\\V1\\ClientRepository::restore<\/a>"],[100,1,"<a href=\"Repositories\/V1\/OrderRepository.php.html#19\">App\\Repositories\\V1\\OrderRepository::__construct<\/a>"],[100,1,"<a href=\"Repositories\/V1\/OrderRepository.php.html#21\">App\\Repositories\\V1\\OrderRepository::list<\/a>"],[100,3,"<a href=\"Repositories\/V1\/OrderRepository.php.html#30\">App\\Repositories\\V1\\OrderRepository::create<\/a>"],[100,1,"<a href=\"Repositories\/V1\/OrderRepository.php.html#55\">App\\Repositories\\V1\\OrderRepository::read<\/a>"],[100,1,"<a href=\"Repositories\/V1\/OrderRepository.php.html#60\">App\\Repositories\\V1\\OrderRepository::update<\/a>"],[100,1,"<a href=\"Repositories\/V1\/OrderRepository.php.html#73\">App\\Repositories\\V1\\OrderRepository::delete<\/a>"],[0,3,"<a href=\"Repositories\/V1\/OrderRepository.php.html#79\">App\\Repositories\\V1\\OrderRepository::restore<\/a>"],[100,1,"<a href=\"Repositories\/V1\/ProductRepository.php.html#11\">App\\Repositories\\V1\\ProductRepository::__construct<\/a>"],[66.66666666666666,1,"<a href=\"Repositories\/V1\/ProductRepository.php.html#13\">App\\Repositories\\V1\\ProductRepository::list<\/a>"],[100,2,"<a href=\"Repositories\/V1\/ProductRepository.php.html#26\">App\\Repositories\\V1\\ProductRepository::create<\/a>"],[100,1,"<a href=\"Repositories\/V1\/ProductRepository.php.html#32\">App\\Repositories\\V1\\ProductRepository::read<\/a>"],[100,1,"<a href=\"Repositories\/V1\/ProductRepository.php.html#38\">App\\Repositories\\V1\\ProductRepository::update<\/a>"],[100,1,"<a href=\"Repositories\/V1\/ProductRepository.php.html#45\">App\\Repositories\\V1\\ProductRepository::delete<\/a>"],[0,3,"<a href=\"Repositories\/V1\/ProductRepository.php.html#51\">App\\Repositories\\V1\\ProductRepository::restore<\/a>"],[0,5,"<a href=\"Enums\/ProductTypeEnum.php.html#12\">App\\Enums\\ProductTypeEnum::label<\/a>"],[100,1,"<a href=\"Enums\/ProductTypeEnum.php.html#21\">App\\Enums\\ProductTypeEnum::values<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

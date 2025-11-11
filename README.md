@@ -6,6 +6,9 @@ Listar, Criar, Ler, Editar e Excluir (CRUDL) dados para os seguintes módulos: P
 ## A documentação da API pode ser acessada na routa /docs 
 Cobertura da documentação: Autenticação e CRUDL de clientes, produtos e pedidos
 
+## Cobertura de testes automatizados
+![Coverage](https://img.shields.io/badge/coverage-66.22%25-yellow)
+
 ## Tecnologias Usadas
 - PHP 8.4
 - Laravel 12
