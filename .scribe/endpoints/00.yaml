@@ -122,7 +122,7 @@ endpoints:
         name: email
         description: required.
         required: false
-        example: john@mail.com
+        example: admin@admin.com
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -133,15 +133,15 @@ endpoints:
         name: password
         description: ''
         required: false
-        example: '|]|{+-'
+        example: password
         type: string.
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      email: john@mail.com
-      password: '|]|{+-'
+      email: admin@admin.com
+      password: password
     fileParameters: []
     responses:
       -
@@ -152,8 +152,8 @@ endpoints:
             "token": "urbfjdj83jdjsjjsudjsis838euue",
             "user": {
                "id": 1,
-               "name": John,
-               "email": "email@mail.com",
+               "name": admin,
+               "email": "admin@admin.com",
            }
           }
         headers: []

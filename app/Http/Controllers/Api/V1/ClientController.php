@@ -125,6 +125,18 @@ class ClientController extends Controller
         return response()->noContent();
     }
 
+    /**
+     * Restore a product by ID
+     *
+     * @group Products
+     * @authenticated
+     * @urlParam id int required The ID of the product. Example: 1
+     *
+     * @response 200 {}
+     * @response 404 {
+     *   "message": "Product not found"
+     * }
+     */
     public function restore(int|null $id = null): JsonResponse
     {
         $restore = $this->clientRepository->restore($id);

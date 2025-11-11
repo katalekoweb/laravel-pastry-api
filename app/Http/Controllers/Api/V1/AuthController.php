@@ -52,14 +52,14 @@ class AuthController extends Controller
 
     /**
      * @group Auth
-     * @bodyParam email string  required. Example: john@mail.com
-     * @bodyParam password string.
+     * @bodyParam email string  required. Example: admin@admin.com
+     * @bodyParam password string. Example: password
      * @response 200 {
      *   "token": "urbfjdj83jdjsjjsudjsis838euue",
      *   "user": {
      *      "id": 1,
-     *      "name": John,
-     *      "email": "email@mail.com",
+     *      "name": admin,
+     *      "email": "admin@admin.com",
      *  }
      * }
      */

@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\ClientController;
 use App\Http\Controllers\Api\V1\OrderController;
 use App\Http\Controllers\Api\V1\ProductController;
+use App\Http\Controllers\Api\V1\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,7 @@ Route::prefix("v1")->group(function () {
     Route::post("login", [AuthController::class, "login"]);
 
     Route::middleware("auth:sanctum")->group(function () {
-        Route::get('/user', function (Request $request) {
-            return $request->user();
-        });
+        Route::get('/me', [ProfileController::class, 'me']);
 
         Route::post("logout", [AuthController::class, "logout"]);
         Route::apiResource("products", ProductController::class);

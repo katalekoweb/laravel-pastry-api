@@ -23,7 +23,7 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "client_id" => ['required', 'exists:clients,id'],
+            "client_id" => ['required', 'numeric', 'exists:clients,id'],
             "products" => ["required", "array"],
             "products.*" => ["required", Rule::exists('products', 'id')->where(function ($query) { $query->where('status', true);}),]
         ];

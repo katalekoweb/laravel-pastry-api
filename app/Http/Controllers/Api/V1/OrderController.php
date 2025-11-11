@@ -14,32 +14,56 @@ class OrderController extends Controller
 {
     public function __construct(private OrderRepositoryInterface $orderRepository) {}
 
+    /**
+     * @group Orders
+     * @authenticated
+     */
     public function index(FilterRequest $request)
     {
         return OrderResource::collection($this->orderRepository->list($request->validated()));
     }
 
+    /**
+     * @group Orders
+     * @authenticated
+     */
     public function store(OrderRequest $request)
     {
         return new OrderResource($this->orderRepository->create($request->validated()));
     }
 
+    /**
+     * @group Orders
+     * @authenticated
+     */
     public function show(int $id)
     {
         return new OrderResource($this->orderRepository->read($id));
     }
 
+    /**
+     * @group Orders
+     * @authenticated
+     */
     public function update(OrderRequest $request, string $id)
     {
         return new OrderResource($this->orderRepository->update($request->validated(), $id));
     }
 
+    /**
+     * @group Orders
+     * @authenticated
+     */
     public function destroy(string $id)
     {
         $this->orderRepository->delete($id);
         return response()->noContent();
     }
 
+    /**
+     * @group Orders
+     * @authenticated
+     */
     public function restore(int|null $id = null): JsonResponse
     {
         $restore = $this->orderRepository->restore($id);
