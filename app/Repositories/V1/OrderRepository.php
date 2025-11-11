@@ -14,9 +14,13 @@ class OrderRepository implements OrderRepositoryInterface
      */
     public function __construct(private Order $model) {}
 
-    public function list(): Collection
+    public function list(array $request): Collection
     {
-        return $this->model->orderByDesc("id")->get();
+        return $this->model
+            ->withTrashed($request['with_trashed']) 
+            ->orderBy($request['sort_by'], $request['sort_order'])
+            ->orderByDesc("id")
+            ->get();
     }
 
     public function create(array $data): Order

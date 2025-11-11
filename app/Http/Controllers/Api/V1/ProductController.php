@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\FilterRequest;
 use App\Http\Requests\V1\ProductRequest;
 use App\Http\Resources\V1\ProductResource;
 use App\Models\Product;
@@ -13,9 +14,9 @@ class ProductController extends Controller
 {
     public function __construct(private ProductRepositoryInterface $productRepository) {}
 
-    public function index()
+    public function index(FilterRequest $request)
     {
-        $products = $this->productRepository->list();
+        $products = $this->productRepository->list($request->validated());
         return ProductResource::collection($products);
     }
 

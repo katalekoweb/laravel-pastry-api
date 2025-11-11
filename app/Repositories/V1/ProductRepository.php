@@ -10,9 +10,17 @@ class ProductRepository implements ProductRepositoryInterface
 {
     public function __construct(private Product $model) {}
 
-    public function list(): Collection
+    public function list(array $request): Collection
     {
-        return $this->model->get();
+        return $this->model
+            ->withTrashed($request['with_trashed'])
+            ->when(isset($request['query']), function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request['query'] . '%')
+                    ->orWhere('price', 'like', '%' . $request['query'] . '%')
+                    ->orWhere('type', 'like', '%' . $request['query'] . '%');
+            })
+            ->orderBy($request['sort_by'], $request['sort_order'])
+            ->get();
     }
 
     public function create(array $data): Product

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\FilterRequest;
 use App\Http\Requests\V1\OrderRequest;
 use App\Http\Resources\V1\OrderResource;
 use App\Repositories\V1\OrderRepositoryInterface;
@@ -13,9 +14,9 @@ class OrderController extends Controller
 {
     public function __construct(private OrderRepositoryInterface $orderRepository) {}
 
-    public function index()
+    public function index(FilterRequest $request)
     {
-        return OrderResource::collection($this->orderRepository->list());
+        return OrderResource::collection($this->orderRepository->list($request->validated()));
     }
 
     public function store(OrderRequest $request)

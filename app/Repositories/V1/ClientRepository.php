@@ -2,6 +2,7 @@
 
 namespace App\Repositories\V1;
 
+use App\Http\Requests\V1\FilterRequest;
 use App\Models\Client;
 use Illuminate\Support\Collection;
 
@@ -9,9 +10,17 @@ class ClientRepository implements ClientRepositoryInterface
 {
     public function __construct(private Client $model) {}
 
-    public function list(): Collection
+    public function list(array $request): Collection
     {
-        return $this->model->get();
+        return $this->model
+                ->withTrashed($request['with_trashed'])
+                ->when(isset($request['query']), function ($query) use ($request) {
+                    $query->where('name', 'like', '%' . $request['query'] . '%')
+                            ->orWhere('email', 'like', '%' . $request['query'] . '%')
+                            ->orWhere('phone', 'like', '%' . $request['query'] . '%');
+                })
+                ->orderBy($request['sort_by'], $request['sort_order'])
+                ->get();
     }
 
     public function create(array $data): Client

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\ClientRequest;
+use App\Http\Requests\V1\FilterRequest;
 use App\Http\Resources\V1\ClientResource;
 use App\Repositories\V1\ClientRepositoryInterface;
 use Illuminate\Http\JsonResponse;
@@ -32,9 +33,9 @@ class ClientController extends Controller
      *   ]
      * }
      */
-    public function index()
+    public function index(FilterRequest $request)
     {
-        return ClientResource::collection($this->clientRepository->list());
+        return ClientResource::collection($this->clientRepository->list($request->validated()));
     }
 
     /**

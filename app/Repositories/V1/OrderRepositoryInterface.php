@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 interface OrderRepositoryInterface
 {
-    public function list (): Collection;
+    public function list (array $request): Collection;
     public function create (array $data): Order;
     public function read (int $id): Order|null;
     public function update (array $data, int $id): Order;

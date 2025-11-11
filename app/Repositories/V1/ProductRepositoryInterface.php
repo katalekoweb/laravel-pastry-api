@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 interface ProductRepositoryInterface
 {
-    public function list (): Collection;
+    public function list (array $request): Collection;
     public function create (array $data): Product;
     public function read (int $id): Product|null;
     public function update (array $data, int $id): Product;
