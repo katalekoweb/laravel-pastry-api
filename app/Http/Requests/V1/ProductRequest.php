@@ -27,6 +27,7 @@ class ProductRequest extends FormRequest
         return [
             "name" => ['required', 'string', 'min:2'],
             "price" => ['required', 'numeric'],
+            "category_id" => ["required", "exists:categories,id"],
             "photo" => [$required_photo, 'file', 'mimes:png,jpg']
         ];
     }
