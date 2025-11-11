@@ -9,6 +9,7 @@ use App\Http\Resources\V1\OrderResource;
 use App\Repositories\V1\OrderRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 
 class OrderController extends Controller
 {
@@ -29,6 +30,15 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request)
     {
+        $key = 'user:' . request()->user()->id;
+        $maxAttempts = 3;
+
+        if (RateLimiter::tooManyAttempts($key, $maxAttempts)) {
+            return response()->json(['message' => 'Excesso de tentativas. Tente daqui a pouco'], 429);
+        }
+
+        RateLimiter::hit($key, 60);
+        
         return new OrderResource($this->orderRepository->create($request->validated()));
     }
 

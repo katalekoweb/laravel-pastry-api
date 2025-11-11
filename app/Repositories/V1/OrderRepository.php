@@ -6,7 +6,10 @@ use App\Events\OrderCreated;
 use App\Models\Client;
 use App\Models\Order;
 use App\Notifications\NewOrderNotification;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class OrderRepository implements OrderRepositoryInterface
 {
@@ -18,21 +21,31 @@ class OrderRepository implements OrderRepositoryInterface
     public function list(array $request): Collection
     {
         return $this->model
-            ->withTrashed($request['with_trashed']) 
+            ->withTrashed($request['with_trashed'])
             ->orderBy($request['sort_by'], $request['sort_order'])
             ->orderByDesc("id")
             ->get();
     }
 
-    public function create(array $data): Order
+    public function create(array $data): Order|JsonResponse
     {
-        $products = $data["products"];
-        unset($data['products']);
+        DB::beginTransaction();
 
-        $order = $this->model->create($data);
-        $order->products()?->sync($products);
-        
-        if ($order->client?->email) event(new OrderCreated($order));
+        try {            
+            $products = $data["products"];
+            unset($data['products']);
+
+            $order = $this->model->create($data);
+            $order->products()?->sync($products);
+
+            if ($order->client?->email) event(new OrderCreated($order));
+
+            DB::commit();
+
+        } catch (Exception $e) {
+            DB::rollBack();
+            return response()->json(["message" => $e->getMessage()], 422);
+        }
 
         return $order;
     }
